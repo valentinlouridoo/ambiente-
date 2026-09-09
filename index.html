@@ -251,19 +251,21 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
 .progress-fill{ height:100%; background:linear-gradient(90deg, var(--lithium), var(--terracotta)); width:0%; transition:width .35s ease; }
 
 .controls{
-  position:fixed; bottom:1.1rem; left:50%; transform:translateX(-50%);
-  display:flex; align-items:center; gap:.7rem; z-index:60;
-  background:rgba(15,26,28,.55); backdrop-filter:blur(8px);
-  padding:.5rem .7rem; border-radius:999px;
+  position:fixed; bottom:.75rem; left:50%; transform:translate(-50%,8px);
+  display:flex; align-items:center; gap:.45rem; z-index:60;
+  background:rgba(15,26,28,.48); backdrop-filter:blur(8px);
+  padding:.34rem .48rem; border-radius:999px;
+  opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
 }
+.controls.visible{ opacity:1; transform:translate(-50%,0); pointer-events:auto; }
 .ctrl-btn{
-  width:2.3rem;height:2.3rem;border-radius:50%; border:none; cursor:pointer;
-  background:rgba(255,255,255,.12); color:#fff; font-size:1rem;
+  width:1.85rem;height:1.85rem;border-radius:50%; border:none; cursor:pointer;
+  background:rgba(255,255,255,.12); color:#fff; font-size:.85rem;
   display:flex;align-items:center;justify-content:center;
   transition:background .2s;
 }
 .ctrl-btn:hover{ background:rgba(255,255,255,.28); }
-.ctrl-count{ color:#fff; font-size:.78rem; font-family:'Work Sans',sans-serif; min-width:3.4rem; text-align:center; opacity:.85; }
+.ctrl-count{ color:#fff; font-size:.68rem; font-family:'Work Sans',sans-serif; min-width:2.9rem; text-align:center; opacity:.82; }
 
 .notes-toggle{
   position:fixed; bottom:1.1rem; right:1.1rem; z-index:60;
@@ -359,6 +361,17 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
   .bal-item{font-size:1.16rem; line-height:1.45;}
   .final-questions span{font-size:1.08rem;}
 }
+
+/* PROCESS SLIDE — keep all content comfortably inside the 16:9 frame */
+.process-slide .two-col{ margin-top:.45rem !important; gap:2.15rem; }
+.process-slide .process{ gap:.05rem; }
+.process-slide .p-step{ min-height:2.85rem; }
+.process-slide .p-dot{ width:2.05rem; height:2.05rem; font-size:.9rem; }
+.process-slide .p-label{ font-size:1.08rem; line-height:1.08; }
+.process-slide .p-desc{ font-size:.98rem; line-height:1.12; }
+.process-slide .p-arrow{ font-size:.95rem; line-height:1; margin:.02rem 0; }
+.process-slide .visual-card{ min-height:10.1rem !important; margin-bottom:.65rem !important; }
+.process-slide p{ font-size:1.08rem !important; line-height:1.34; margin:.5rem 0; }
 
 /* FINAL PROJECTOR READABILITY + MAP FIX */
 @media (min-width:821px){
@@ -534,8 +547,8 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
 </section>
 
 <!-- 7 — PROCESO DE EXTRACCIÓN -->
-<section class="slide" data-presenters="Bauti">
-  <h2 class="slide-title small" style="margin-top:1rem;">PROCESO DE EXTRACCIÓN<br>Y PRODUCCIÓN DEL LITIO</h2>
+<section class="slide process-slide" data-presenters="Bauti">
+  <h2 class="slide-title small" style="margin-top:.65rem;">PROCESO DE EXTRACCIÓN<br>Y PRODUCCIÓN DEL LITIO</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div class="process">
       <div class="p-step"><div class="p-dot" style="background:var(--deep-blue);">1</div><div><div class="p-label">Salar</div><div class="p-desc">Cuenca cerrada con costra de sal</div></div></div>
@@ -838,7 +851,7 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
     </div>
   </div>
   <div class="footer-row">
-    <p class="source-note">Trabajo elaborado para la materia Degradación del Suelo. Cifras actualizadas a 2026 según las fuentes citadas. La resolución judicial del conflicto por el Río Los Patos sigue abierta al momento de esta presentación.</p>
+    <p class="source-note">Trabajo elaborado para la materia Ambiente, Desarrollo y Sociedad. Cifras actualizadas a 2026 según las fuentes citadas. La resolución judicial del conflicto por el Río Los Patos sigue abierta al momento de esta presentación.</p>
   </div>
   <div class="notes">
     <div class="notes-block" data-speaker="Grupo">
@@ -876,7 +889,19 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
   const notesContent = document.getElementById('notesContent');
   const notesTitle = document.getElementById('notesTitle');
   const notesToggle = document.getElementById('notesToggle');
+  const controls = document.querySelector('.controls');
   const speakerClass = {Valen:'ns-valen', Bauti:'ns-bauti', Chaves:'ns-chaves', Laza:'ns-laza', Grupo:'ns-laza'};
+
+  let controlsTimer = null;
+  function revealControls(){
+    controls.classList.add('visible');
+    clearTimeout(controlsTimer);
+    controlsTimer = setTimeout(()=>controls.classList.remove('visible'), 1500);
+  }
+  document.addEventListener('mousemove', revealControls, {passive:true});
+  document.addEventListener('touchstart', revealControls, {passive:true});
+  controls.addEventListener('mouseenter', ()=>{ clearTimeout(controlsTimer); controls.classList.add('visible'); });
+  controls.addEventListener('mouseleave', revealControls);
 
   function renderNotes(i){
     const slide = slides[i];
