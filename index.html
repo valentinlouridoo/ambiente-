@@ -22,7 +22,7 @@
   --deep-blue:#1C3A4D;
   --line:rgba(42,33,24,0.12);
   --shadow:0 18px 40px rgba(42,33,24,0.14);
-  font-size:16px;
+  font-size:18px;
 }
 *{box-sizing:border-box;}
 html,body{
@@ -72,7 +72,16 @@ h1,h2,h3{ margin:0; font-family:'Fraunces',Georgia,'Times New Roman',serif; font
   letter-spacing:.14em; color:var(--turquoise-deep); margin:0 0 .6rem 0;
 }
 .kicker-num{ font-family:'Fraunces',serif; font-weight:600; opacity:.5; }
-p{ line-height:1.42; color:var(--ink-soft); }
+p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
+
+
+.section-label{
+  display:inline-block; align-self:flex-start;
+  font-family:'Work Sans',sans-serif; font-weight:800; font-size:.92rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--turquoise-deep);
+  border-left:5px solid var(--lithium); padding:.2rem 0 .2rem .75rem;
+  margin-bottom:.1rem;
+}
 
 /* ---------- reusable pieces ---------- */
 .badge{
@@ -94,10 +103,10 @@ p{ line-height:1.42; color:var(--ink-soft); }
 .datachip .label{ font-size:.98rem; color:var(--ink-soft); margin-top:.35rem; }
 
 /* ---------- slide-specific layouts ---------- */
-.slide-title{ font-size:4.15rem; line-height:1.02; letter-spacing:-.01em; }
-.slide-title.small{ font-size:3.15rem; }
+.slide-title{ font-size:4.55rem; line-height:1.0; letter-spacing:-.018em; }
+.slide-title.small{ font-size:3.25rem; }
 
-.two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:2.4rem; flex:1; align-items:center; }
+.two-col{ display:grid; grid-template-columns:1.06fr .94fr; gap:2.8rem; flex:1; align-items:center; }
 .two-col.reverse{ grid-template-columns:.9fr 1.1fr; }
 
 .footer-row{
@@ -142,6 +151,8 @@ p{ line-height:1.42; color:var(--ink-soft); }
 .locator svg{ width:100%; height:auto; max-height:20rem; }
 .visual-card{position:relative; border-radius:22px; overflow:hidden; background:#e9eee9; box-shadow:var(--shadow); min-height:20rem; border:1px solid rgba(42,33,24,.10);}
 .visual-card img{width:100%;height:100%;min-height:20rem;object-fit:cover;display:block;}
+.map-visual{min-height:0 !important; height:29rem; display:flex; align-items:center; justify-content:center; background:#fff;}
+.map-visual img{min-height:0 !important; height:100%; width:100%; object-fit:contain; padding:.6rem; background:#fff;}
 .visual-overlay{position:absolute;inset:auto 0 0 0;padding:3rem 1.1rem .9rem;background:linear-gradient(transparent,rgba(18,31,32,.82));color:#fff;}
 .visual-overlay b{font-size:1.02rem;}.visual-overlay span{display:block;font-size:.72rem;opacity:.86;margin-top:.2rem;}
 .map-caption{font-size:.72rem;color:var(--ink-soft);margin:.4rem 0 0;text-align:center;opacity:.8;}
@@ -289,8 +300,8 @@ p{ line-height:1.42; color:var(--ink-soft); }
   .two-col, .two-col.reverse{ grid-template-columns:1fr 1fr; gap:2.2%; }
   .balance{ grid-template-columns:1fr 1fr; gap:2%; }
   .actor-grid{ grid-template-columns:1fr 1fr; gap:1.5%; }
-  .slide-title{ font-size:clamp(1.8rem,8vw,3.6rem); }
-  .slide-title.small{ font-size:clamp(1.55rem,6.5vw,2.6rem); }
+  .slide-title{ font-size:clamp(2rem,8.2vw,3.6rem); }
+  .slide-title.small{ font-size:clamp(1.72rem,6.8vw,2.7rem); }
   .portada h1{ font-size:clamp(2.3rem,10vw,4.4rem); }
   .portada .sub{ font-size:clamp(.75rem,2.6vw,1.15rem); }
   .integrantes{ margin-top:4%; gap:.45rem; }
@@ -298,7 +309,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
   .datachip{ padding:.65rem .8rem; }
   .datachip .num{ font-size:clamp(1.1rem,4.2vw,2.1rem); }
   .datachip .label{ font-size:clamp(.52rem,1.8vw,.82rem); }
-  p{ font-size:clamp(.58rem,2vw,1.05rem) !important; }
+  p{ font-size:clamp(.72rem,2.3vw,1.18rem) !important; }
   .p-label{ font-size:clamp(.6rem,2.2vw,1.05rem); }
   .p-desc{ font-size:clamp(.48rem,1.7vw,.82rem); }
   .actor-card{ padding:.65rem .8rem; }
@@ -324,6 +335,31 @@ p{ line-height:1.42; color:var(--ink-soft); }
 .video-question{background:rgba(243,194,48,.18);border-radius:12px;padding:.55rem .8rem;font-size:.72rem;color:var(--deep-blue);text-align:right}
 .video-question strong{font-size:.82rem}
 @media(max-width:820px){.video-info{flex-direction:column;align-items:stretch}.video-question{text-align:center}.video-frame{width:100%}}
+
+/* TV / PROJECTOR READABILITY PATCH — keeps the original presentation intact */
+@media (min-width:821px){
+  p{font-size:1.24rem !important; line-height:1.5;}
+  .eyebrow{font-size:.9rem;}
+  .badge{font-size:.9rem;}
+  .datachip .label{font-size:1.08rem;}
+  .p-label{font-size:1.16rem;}
+  .p-desc{font-size:1.12rem;}
+  .actor-card h4{font-size:1.28rem;}
+  .actor-card p{font-size:1.08rem; line-height:1.5;}
+  .t-year{font-size:1.85rem;}
+  .t-text{font-size:1.2rem; line-height:1.48;}
+  .source-item{font-size:1.05rem; line-height:1.55;}
+  .source-cat{font-size:.8rem;}
+  .video-info b{font-size:1.12rem;}
+  .video-info span{font-size:.88rem;}
+  .video-question{font-size:.82rem;}
+  .video-question strong{font-size:.92rem;}
+  .map-caption{font-size:.82rem;}
+  .chain-node{font-size:1.32rem; padding:1.1rem 1.65rem;}
+  .bal-item{font-size:1.16rem; line-height:1.45;}
+  .final-questions span{font-size:1.08rem;}
+}
+
 </style>
 </head>
 <body>
@@ -356,7 +392,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 2 — QUÉ ES EL LITIO -->
 <section class="slide" data-presenters="Valen">
-  <h2 class="slide-title" style="margin-top:1rem;">EL LITIO NO<br>APARECE DE LA NADA.</h2>
+  <h2 class="slide-title" style="margin-top:1rem;">¿QUÉ ES EL LITIO<br>Y PARA QUÉ SE UTILIZA?</h2>
   <div class="two-col" style="margin-top:1.5rem;">
     <div>
       <p style="font-size:1.05rem;">Es un metal liviano, blando y muy reactivo, clave para las baterías recargables: está en celulares, notebooks, sistemas de almacenamiento de energía y vehículos eléctricos.</p>
@@ -376,7 +412,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 3 — TRIÁNGULO DEL LITIO -->
 <section class="slide" data-presenters="Valen">
-  <h2 class="slide-title small" style="margin-top:1rem;">EL TRIÁNGULO<br>DEL LITIO.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">CONTEXTO REGIONAL:<br>EL TRIÁNGULO DEL LITIO</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div>
       <p>Bolivia, Chile y Argentina concentran una parte muy importante de los recursos de litio de la región andina. Por eso se habla del <b>Triángulo del Litio</b>.</p>
@@ -403,7 +439,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 4 — POR QUÉ CATAMARCA / PREGUNTA CENTRAL -->
 <section class="slide" data-presenters="Valen">
-  <h2 class="slide-title small" style="margin-top:1rem;">CATAMARCA: EL TERRITORIO<br>EN EL CENTRO.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">CONTEXTO DEL CASO:<br>¿POR QUÉ CATAMARCA?</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div>
       <p>Catamarca es la provincia argentina donde la minería de litio tiene más historia: el Proyecto Fénix extrae litio del Salar del Hombre Muerto desde 1997-1998, el yacimiento más antiguo del país todavía en producción.</p>
@@ -424,7 +460,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 5 — CONTEXTO GEOGRÁFICO -->
 <section class="slide" data-presenters="Bauti">
-  <h2 class="slide-title small" style="margin-top:1rem;">LA PUNA CATAMARQUEÑA,<br>A 4.000 METROS.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">CONTEXTO GEOGRÁFICO:<br>LA PUNA CATAMARQUEÑA</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div>
       <p>El Salar del Hombre Muerto se encuentra en el noroeste de Catamarca, en el departamento Antofagasta de la Sierra, cerca del límite con Salta y dentro de la Puna.</p>
@@ -451,7 +487,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 6 — SALAR Y SALMUERA -->
 <section class="slide" data-presenters="Bauti">
-  <h2 class="slide-title small" style="margin-top:1rem;">UN SALAR ES UNA<br>ESPONJA DE SAL Y AGUA.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">¿CÓMO ES EL SALAR<br>DEL HOMBRE MUERTO?</h2>
   <div class="two-col reverse" style="margin-top:1rem;">
     <div class="photo-frame" style="aspect-ratio:4/3;">
       <img src="https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/38000/38729/salardelmuerto_ali_2009136.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg" alt="Salar del Hombre Muerto visto desde el satélite EO-1 de la NASA">
@@ -471,7 +507,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 7 — PROCESO DE EXTRACCIÓN -->
 <section class="slide" data-presenters="Bauti">
-  <h2 class="slide-title small" style="margin-top:1rem;">DE LA SALMUERA<br>AL CARBONATO DE LITIO.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">PROCESO DE EXTRACCIÓN<br>Y PRODUCCIÓN DEL LITIO</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div class="process">
       <div class="p-step"><div class="p-dot" style="background:var(--deep-blue);">1</div><div><div class="p-label">Salar</div><div class="p-desc">Cuenca cerrada con costra de sal</div></div></div>
@@ -505,7 +541,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 8 — DEGRADACIÓN DEL SUELO: MECANISMOS -->
 <section class="slide" data-presenters="Chaves">
-  <h2 class="slide-title small" style="margin-top:1rem;">EL SUELO TAMBIÉN<br>SE TRANSFORMA.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">DEGRADACIÓN DEL SUELO:<br>TIPOS Y MECANISMOS</h2>
   <div class="two-col" style="margin-top:.6rem;">
     <div>
       <p>La degradación del suelo es la pérdida de su capacidad para cumplir sus funciones ecológicas y productivas. Las obras asociadas a la actividad minera —caminos, plataformas, campamentos, piletas— pueden producir:</p>
@@ -526,7 +562,8 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 9 — HORIZONTES DEL SUELO -->
 <section class="slide" data-presenters="Chaves">
-  <h2 class="slide-title small" style="margin-top:1rem;">LOS HORIZONTES DEL SUELO,<br>CAPA POR CAPA.</h2>
+  <span class="section-label">RELACIÓN CON LAS PROPIEDADES DEL SUELO</span>
+  <h2 class="slide-title small" style="margin-top:.55rem;">RELACIÓN CON LOS<br>HORIZONTES DEL SUELO</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div class="horizon-wrap">
       <div class="horizon-block">
@@ -558,7 +595,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 10 — EL AGUA ES EL PUNTO CRÍTICO -->
 <section class="slide" data-presenters="Chaves">
-  <h2 class="slide-title small" style="margin-top:1rem;">EL AGUA ES EL<br>PUNTO CRÍTICO.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">IMPACTO SOBRE EL AGUA<br>Y EL TERRITORIO</h2>
   <div class="two-col" style="margin-top:.8rem;">
     <div>
       <p>En un ambiente árido y de altura, el agua no es un recurso más: es el factor que sostiene los pocos ecosistemas de vega y humedal del salar, y el consumo humano de las comunidades locales.</p>
@@ -579,7 +616,8 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 11 — ACTORES -->
 <section class="slide" data-presenters="Laza">
-  <h2 class="slide-title small" style="margin-top:1rem;">UN PROYECTO MINERO<br>NUNCA ESTÁ SOLO.</h2>
+  <span class="section-label">ACTORES INVOLUCRADOS</span>
+  <h2 class="slide-title small" style="margin-top:.55rem;">EMPRESAS, ESTADO<br>Y COMUNIDADES</h2>
   <div class="actor-grid" style="margin-top:1rem;">
     <div class="actor-card"><h4>Empresas</h4><p>Rio Tinto (Fénix, vía Minera del Altiplano), Zijin Mining (Tres Quebradas, vía Liex) y Galan Lithium (Hombre Muerto Oeste), entre otras.</p></div>
     <div class="actor-card c2"><h4>Estado nacional</h4><p>Ministerio de Economía y el Régimen de Incentivo para Grandes Inversiones (RIGI), que aprueba y regula las nuevas inversiones mineras.</p></div>
@@ -595,7 +633,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 12 — RÍO LOS PATOS: CONFLICTO -->
 <section class="slide" data-presenters="Laza">
-  <h2 class="slide-title small" style="margin-top:.8rem;">RÍO LOS PATOS.</h2>
+  <h2 class="slide-title small" style="margin-top:.8rem;">CONFLICTO AMBIENTAL:<br>RÍO LOS PATOS</h2>
   <div class="two-col reverse" style="margin-top:.4rem; align-items:stretch;">
     <div class="photo-frame" style="aspect-ratio:auto;">
       <img src="https://storage.epbr.com.br/2024/04/Projeto-Fenix-da-Arcadium-Lithium-no-Salar-del-Hombre-Muerto-provincia-argentina-de-Catamarca-um-dos-poucos-que-produzem-e-exportam-litio-Foto-Airbus-via-Google-Earth-1-1536x1024.jpg" alt="Vista aérea del Proyecto Fénix en el Salar del Hombre Muerto">
@@ -633,7 +671,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 13 — IMPACTO ACUMULATIVO -->
 <section class="slide" data-presenters="Laza">
-  <h2 class="slide-title small" style="margin-top:1rem;">UN PROYECTO NO<br>EXISTE AISLADO.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">IMPACTO<br>ACUMULATIVO</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div>
       <p><b>Impacto acumulativo</b> significa que no alcanza con evaluar cada proyecto minero por separado cuando varios emprendimientos afectan a la vez el mismo sistema ambiental —en este caso, la misma cuenca hídrica del Salar del Hombre Muerto.</p>
@@ -652,7 +690,8 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 14 — LA OTRA CARA DEL LITIO -->
 <section class="slide" data-presenters="Laza">
-  <h2 class="slide-title small" style="margin-top:.8rem;">LA OTRA CARA<br>DEL LITIO.</h2>
+  <span class="section-label">CONSECUENCIAS AMBIENTALES, SOCIALES Y ECONÓMICAS</span>
+  <h2 class="slide-title small" style="margin-top:.55rem;">CONSECUENCIAS:<br>BENEFICIOS Y COSTOS</h2>
   <div class="balance" style="margin-top:.8rem;">
     <div class="balance-col pos">
       <h3 style="color:#3f5735;">+ Beneficios económicos</h3>
@@ -678,7 +717,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 15 — ¿ES VERDE EL LITIO? -->
 <section class="slide" data-presenters="Laza">
-  <h2 class="slide-title small" style="margin-top:1rem;">¿EL LITIO ES VERDE?</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">DEBATE AMBIENTAL:<br>¿EL LITIO ES VERDE?</h2>
   <div class="chain" style="margin-top:1.4rem;">
     <div class="chain-node">Transición<br>energética</div><div class="chain-sep">→</div>
     <div class="chain-node">Baterías</div><div class="chain-sep">→</div>
@@ -699,7 +738,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 <!-- 16 — ENTREVISTA / VIDEO -->
 <section class="slide" data-presenters="Grupo">
   <span class="badge">REGISTRO AUDIOVISUAL</span>
-  <h2 class="slide-title small" style="margin-top:1rem;">UNA VOZ DESDE<br>EL TERRITORIO.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">REGISTRO AUDIOVISUAL:<br>MIRADA DE LA POBLACIÓN</h2>
   <div class="clip-switch">
     <button class="clip-btn active" data-start="587" data-end="611">Fragmento 1 · 09:47–10:11</button>
     <button class="clip-btn" data-start="720" data-end="786">Fragmento 2 · 12:00–13:06</button>
@@ -724,7 +763,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 <!-- 17 — FINAL -->
 <section class="slide final-slide" data-presenters="Grupo">
   <span class="eyebrow">CIERRE</span>
-  <h1 style="font-size:3.2rem; margin-top:.5rem;">EL VERDADERO DEBATE.</h1>
+  <h1 style="font-size:3.2rem; margin-top:.5rem;">CONCLUSIONES:<br>EL VERDADERO DEBATE.</h1>
   <div class="final-questions">
     <span>¿Cómo se extrae?</span>
     <span>¿Cuánto se extrae?</span>
@@ -743,7 +782,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
 <!-- 18 — FUENTES -->
 <section class="slide" data-presenters="Grupo">
   <span class="badge">FUENTES CONSULTADAS</span>
-  <h2 class="slide-title small" style="margin-top:1rem;">FUENTES.</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">FUENTES CONSULTADAS.</h2>
   <div class="sources-grid" style="margin-top:.6rem;">
     <div>
       <div class="source-cat">Datos oficiales</div>
