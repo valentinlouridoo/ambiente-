@@ -22,7 +22,7 @@
   --deep-blue:#1C3A4D;
   --line:rgba(42,33,24,0.12);
   --shadow:0 18px 40px rgba(42,33,24,0.14);
-  font-size:18px;
+  font-size:16px;
 }
 *{box-sizing:border-box;}
 html,body{
@@ -140,6 +140,15 @@ p{ line-height:1.42; color:var(--ink-soft); }
 /* locator diagram */
 .locator{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.4rem; }
 .locator svg{ width:100%; height:auto; max-height:20rem; }
+.visual-card{position:relative; border-radius:22px; overflow:hidden; background:#e9eee9; box-shadow:var(--shadow); min-height:20rem; border:1px solid rgba(42,33,24,.10);}
+.visual-card img{width:100%;height:100%;min-height:20rem;object-fit:cover;display:block;}
+.visual-overlay{position:absolute;inset:auto 0 0 0;padding:3rem 1.1rem .9rem;background:linear-gradient(transparent,rgba(18,31,32,.82));color:#fff;}
+.visual-overlay b{font-size:1.02rem;}.visual-overlay span{display:block;font-size:.72rem;opacity:.86;margin-top:.2rem;}
+.map-caption{font-size:.72rem;color:var(--ink-soft);margin:.4rem 0 0;text-align:center;opacity:.8;}
+.clip-switch{display:flex;gap:.55rem;justify-content:center;flex-wrap:wrap;margin:.55rem 0 .75rem;}
+.clip-btn{border:1px solid rgba(28,58,77,.18);background:#fff;color:var(--deep-blue);border-radius:999px;padding:.48rem .85rem;font:600 .78rem 'Work Sans',sans-serif;cursor:pointer;box-shadow:0 5px 12px rgba(42,33,24,.08);}
+.clip-btn.active{background:var(--deep-blue);color:#fff;border-color:var(--deep-blue);}
+.clip-meta{font-size:.68rem;color:var(--ink-soft);text-align:center;margin-top:.25rem;}
 
 /* process diagram */
 .process{ display:flex; flex-direction:column; gap:.55rem; }
@@ -280,38 +289,25 @@ p{ line-height:1.42; color:var(--ink-soft); }
   .two-col, .two-col.reverse{ grid-template-columns:1fr 1fr; gap:2.2%; }
   .balance{ grid-template-columns:1fr 1fr; gap:2%; }
   .actor-grid{ grid-template-columns:1fr 1fr; gap:1.5%; }
-  .slide-title{ font-size:clamp(2.05rem,8vw,3.75rem); }
-  .slide-title.small{ font-size:clamp(1.8rem,6.5vw,2.75rem); }
-  .portada h1{ font-size:clamp(2.5rem,10vw,4.6rem); }
-  .portada .sub{ font-size:clamp(.88rem,2.6vw,1.2rem); }
+  .slide-title{ font-size:clamp(1.8rem,8vw,3.6rem); }
+  .slide-title.small{ font-size:clamp(1.55rem,6.5vw,2.6rem); }
+  .portada h1{ font-size:clamp(2.3rem,10vw,4.4rem); }
+  .portada .sub{ font-size:clamp(.75rem,2.6vw,1.15rem); }
   .integrantes{ margin-top:4%; gap:.45rem; }
-  .chip-person{ font-size:clamp(.68rem,2vw,1rem); padding:.4rem .7rem .4rem .45rem; }
-  .datachip{ padding:.7rem .85rem; }
-  .datachip .num{ font-size:clamp(1.25rem,4.2vw,2.2rem); }
-  .datachip .label{ font-size:clamp(.68rem,1.8vw,.9rem); }
-  p{ font-size:clamp(.82rem,2vw,1.12rem) !important; }
-  .p-label{ font-size:clamp(.8rem,2.2vw,1.1rem); }
-  .p-desc{ font-size:clamp(.7rem,1.7vw,.9rem); }
-  .actor-card{ padding:.7rem .85rem; }
-  .actor-card h4{ font-size:clamp(.82rem,2.2vw,1.12rem); }
-  .actor-card p{ font-size:clamp(.7rem,1.7vw,.9rem); }
+  .chip-person{ font-size:clamp(.58rem,2vw,.92rem); padding:.4rem .7rem .4rem .45rem; }
+  .datachip{ padding:.65rem .8rem; }
+  .datachip .num{ font-size:clamp(1.1rem,4.2vw,2.1rem); }
+  .datachip .label{ font-size:clamp(.52rem,1.8vw,.82rem); }
+  p{ font-size:clamp(.58rem,2vw,1.05rem) !important; }
+  .p-label{ font-size:clamp(.6rem,2.2vw,1.05rem); }
+  .p-desc{ font-size:clamp(.48rem,1.7vw,.82rem); }
+  .actor-card{ padding:.65rem .8rem; }
+  .actor-card h4{ font-size:clamp(.7rem,2.2vw,1.08rem); }
+  .actor-card p{ font-size:clamp(.5rem,1.7vw,.82rem); }
   .t-item{ grid-template-columns:4.2rem 1rem 1fr; }
-  .t-year{ font-size:clamp(.8rem,2.5vw,1.55rem); }
-  .t-text{ font-size:clamp(.72rem,1.7vw,.94rem); }
-  .notes-toggle,.fs-hint{ font-size:.65rem; }
-}
-
-/* TV / proyector legibility: body copy and supporting labels stay readable from the back of a classroom. */
-@media (min-width:1200px) and (orientation:landscape){
-  p{ line-height:1.38; }
-  .datachip .label{ font-size:1rem; }
-  .p-label{ font-size:1.08rem; }
-  .p-desc{ font-size:1rem; }
-  .actor-card p{ font-size:.9rem; }
-  .t-text{ font-size:1.05rem; }
-  .source-item{ font-size:.9rem; }
-  .source-cat{ font-size:.76rem; }
-  .source-note{ font-size:.78rem; }
+  .t-year{ font-size:clamp(.7rem,2.5vw,1.5rem); }
+  .t-text{ font-size:clamp(.5rem,1.7vw,.86rem); }
+  .notes-toggle,.fs-hint{ font-size:.62rem; }
 }
 
 /* Presenter names are kept only on the introduction slide.
@@ -380,30 +376,27 @@ p{ line-height:1.42; color:var(--ink-soft); }
 
 <!-- 3 — TRIÁNGULO DEL LITIO -->
 <section class="slide" data-presenters="Valen">
-  <h2 class="slide-title small" style="margin-top:1rem;">EL TRIÁNGULO DEL LITIO</h2>
+  <h2 class="slide-title small" style="margin-top:1rem;">EL TRIÁNGULO<br>DEL LITIO.</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div>
-      <p>Bolivia, Chile y Argentina concentran, en sus salares de altura, una porción decisiva de las reservas mundiales de litio en salmuera. Se lo conoce como el "Triángulo del Litio".</p>
-      <p>El Salar de Atacama (Chile) y el Salar del Hombre Muerto (Catamarca-Salta) concentran juntos entre el 50% y el 70% del litio que hoy se extrae en el mundo.</p>
-      <div style="display:flex; gap:.7rem; margin-top:1.2rem; flex-wrap:wrap;">
-        <div class="datachip"><div class="num">4°</div><div class="label">Productor mundial de litio: Argentina, detrás de Australia, Chile y China</div></div>
+      <p>Bolivia, Chile y Argentina concentran una parte muy importante de los recursos de litio de la región andina. Por eso se habla del <b>Triángulo del Litio</b>.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin-top:1.2rem;">
+        <div class="datachip"><div class="num" style="font-size:1.55rem;">BOLIVIA</div><div class="label">Salar de Uyuni</div></div>
+        <div class="datachip"><div class="num" style="font-size:1.55rem;">CHILE</div><div class="label">Salar de Atacama</div></div>
+        <div class="datachip"><div class="num" style="font-size:1.55rem;">ARGENTINA</div><div class="label">Salar del Hombre Muerto</div></div>
       </div>
     </div>
-    <div class="locator">
-      <svg viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="160,20 40,270 280,270" fill="none" stroke="#1F9C93" stroke-width="2.5" stroke-dasharray="6 6" opacity="0.55"/>
-        <circle cx="160" cy="55" r="9" fill="#7C9A6E"/><text x="176" y="60" font-family="Work Sans" font-size="15" font-weight="700" fill="#2A2118">Bolivia · Salar de Uyuni</text>
-        <circle cx="70" cy="230" r="9" fill="#1F9C93"/><text x="86" y="235" font-family="Work Sans" font-size="15" font-weight="700" fill="#2A2118">Chile · Salar de Atacama</text>
-        <circle cx="250" cy="230" r="11" fill="#DD7C46"/><text x="266" y="212" font-family="Work Sans" font-size="15" font-weight="800" fill="#2A2118">Argentina</text>
-        <text x="266" y="235" font-family="Work Sans" font-size="14" fill="#5B4F42">Salar del Hombre Muerto (Catamarca)</text>
-        <line x1="160" y1="20" x2="40" y2="270" stroke="#2A2118" stroke-width="0" />
-      </svg>
-      <p style="font-size:.78rem; text-align:center; opacity:.7;">Esquema de ubicación del Triángulo del Litio</p>
+    <div>
+      <div class="visual-card" style="min-height:22rem;">
+        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/4YWEBR23MFBXRAGVEHHGCEIEUI.jpg" alt="Mapa del Triángulo del Litio en Sudamérica">
+        <div class="visual-overlay"><b>Triángulo del Litio</b><span>Bolivia · Chile · Argentina</span></div>
+      </div>
+      <p class="map-caption">Mapa regional utilizado como referencia geográfica. Fuente visual: Infobae / Yale University.</p>
     </div>
   </div>
   <div class="notes">
     <div class="notes-block" data-speaker="Valen">
-      <p>El Triángulo del Litio es la región andina donde se concentran los salares con salmueras más ricas en litio del planeta: el Salar de Uyuni en Bolivia, el Salar de Atacama en Chile y el Salar del Hombre Muerto, compartido entre Salta y Catamarca. Argentina es hoy el cuarto productor mundial de litio, detrás de Australia, Chile y China, y está entre los países con mayores reservas del mundo. Por eso decimos que la pregunta central es cómo aprovechar un recurso estratégico como el litio sin trasladar los costos ambientales y sociales a los territorios donde se extrae.</p>
+      <p>El Triángulo del Litio es la región andina donde se concentran numerosos salares con recursos de litio. Incluye sectores de Bolivia, Chile y Argentina. Argentina es hoy uno de los principales productores mundiales y Catamarca ocupa un lugar central por la actividad del Salar del Hombre Muerto. Por eso, antes de entrar en el caso provincial, necesitamos ubicarlo dentro de este contexto regional.</p>
     </div>
   </div>
 </section>
@@ -434,30 +427,24 @@ p{ line-height:1.42; color:var(--ink-soft); }
   <h2 class="slide-title small" style="margin-top:1rem;">LA PUNA CATAMARQUEÑA,<br>A 4.000 METROS.</h2>
   <div class="two-col" style="margin-top:1rem;">
     <div>
-      <p>El Salar del Hombre Muerto se encuentra en el noroeste de Catamarca (departamento Antofagasta de la Sierra), en el límite con Salta, dentro de la Puna: una meseta árida de más de 4.000 msnm, con precipitaciones muy bajas (60-80 mm al año) y disponibilidad limitada de agua.</p>
-      <div style="display:flex; gap:.7rem; margin-top:1rem; flex-wrap:wrap;">
-        <div class="datachip"><div class="num">4.000 m</div><div class="label">Altura sobre el nivel del mar</div></div>
-        <div class="datachip"><div class="num">≈600 km²</div><div class="label">Superficie del salar</div></div>
+      <p>El Salar del Hombre Muerto se encuentra en el noroeste de Catamarca, en el departamento Antofagasta de la Sierra, cerca del límite con Salta y dentro de la Puna.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1.1rem;">
+        <div class="datachip"><div class="num">≈ 4.000 m</div><div class="label">Altitud del salar sobre el nivel del mar</div></div>
+        <div class="datachip"><div class="num">≈ 588 km²</div><div class="label">Superficie aproximada del Salar del Hombre Muerto</div></div>
       </div>
+      <p style="margin-top:1rem;">Es un ambiente extremadamente árido: la disponibilidad de agua es limitada y los ecosistemas de vegas y humedales son especialmente sensibles.</p>
     </div>
-    <div class="locator">
-      <svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="150" cy="130" r="110" fill="none" stroke="#1F9C93" stroke-width="1.5" stroke-dasharray="4 5" opacity=".4"/>
-        <circle cx="150" cy="130" r="72" fill="none" stroke="#DD7C46" stroke-width="1.5" stroke-dasharray="4 5" opacity=".55"/>
-        <circle cx="150" cy="130" r="34" fill="none" stroke="#E2A23B" stroke-width="1.5" opacity=".7"/>
-        <circle cx="150" cy="130" r="6" fill="#136B65"/>
-        <text x="150" y="30" text-anchor="middle" font-family="Work Sans" font-size="13" font-weight="700" fill="#5B4F42">ARGENTINA</text>
-        <text x="150" y="70" text-anchor="middle" font-family="Work Sans" font-size="12" font-weight="700" fill="#a2531f">NOROESTE / PUNA</text>
-        <text x="150" y="108" text-anchor="middle" font-family="Work Sans" font-size="11" font-weight="700" fill="#8a5f13">CATAMARCA</text>
-        <text x="150" y="150" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="12" fill="#136B65">Salar del</text>
-        <text x="150" y="164" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="12" fill="#136B65">Hombre Muerto</text>
-      </svg>
-      <p style="font-size:.78rem; text-align:center; opacity:.7;">Esquema de localización — de Argentina al Salar</p>
+    <div>
+      <div class="visual-card" style="min-height:22rem;">
+        <img src="https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/38000/38729/salardelmuerto_ali_2009136.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg" alt="Vista satelital del Salar del Hombre Muerto">
+        <div class="visual-overlay"><b>Salar del Hombre Muerto</b><span>Antofagasta de la Sierra · Catamarca</span></div>
+      </div>
+      <p class="map-caption">Imagen satelital: NASA Earth Observatory / EO-1 ALI.</p>
     </div>
   </div>
   <div class="notes">
     <div class="notes-block" data-speaker="Bauti">
-      <p>El Salar del Hombre Muerto se encuentra en el noroeste de Catamarca, en una zona de la Puna situada a más de 4.000 metros sobre el nivel del mar. Es un ambiente árido, con precipitaciones muy bajas y disponibilidad limitada de agua. El salar tiene alrededor de 600 kilómetros cuadrados y es compartido con la provincia de Salta. Este dato del clima —árido, de altura, con poquísima lluvia— es clave para entender por qué el agua se vuelve un recurso tan disputado más adelante en nuestro trabajo.</p>
+      <p>El Salar del Hombre Muerto está ubicado en el noroeste de Catamarca, en el departamento Antofagasta de la Sierra, dentro de la Puna. Se encuentra aproximadamente a 4.000 metros sobre el nivel del mar y ocupa unos 588 kilómetros cuadrados. Es un ambiente extremadamente árido, con muy poca precipitación y una disponibilidad limitada de agua. Estas condiciones son importantes para entender por qué el agua aparece como uno de los puntos críticos del conflicto ambiental.</p>
     </div>
   </div>
 </section>
@@ -500,6 +487,10 @@ p{ line-height:1.42; color:var(--ink-soft); }
       <div class="p-step"><div class="p-dot" style="background:#a2531f;">6</div><div><div class="p-label">Carbonato de litio</div><div class="p-desc">Insumo para baterías</div></div></div>
     </div>
     <div>
+      <div class="visual-card" style="min-height:11.5rem;margin-bottom:.9rem;">
+        <img src="https://insertarse.com.ar/gestor/wp-content/uploads/2023/07/image2-4.jpg" alt="Piletas de evaporación de salmuera en un salar altoandino">
+        <div class="visual-overlay"><b>Piletas de evaporación</b><span>El paisaje industrial dentro del salar</span></div>
+      </div>
       <p><b>Método tradicional:</b> la salmuera pasa hasta 18 meses en piletas de evaporación solar, concentrándose poco a poco antes de procesarse.</p>
       <p><b>Extracción directa (DLE):</b> tecnología más reciente que separa el litio de la salmuera con menos tiempo y, según sus impulsores, con menor huella hídrica; varios proyectos de Catamarca ya la incorporan.</p>
       <p style="margin-top:1rem;">En Catamarca funcionan hoy el <b>Proyecto Fénix</b> (Salar del Hombre Muerto, operado por Rio Tinto a través de Minera del Altiplano) y el <b>Proyecto Tres Quebradas (3Q)</b>, de la china Zijin Mining, en Fiambalá.</p>
@@ -607,8 +598,8 @@ p{ line-height:1.42; color:var(--ink-soft); }
   <h2 class="slide-title small" style="margin-top:.8rem;">RÍO LOS PATOS.</h2>
   <div class="two-col reverse" style="margin-top:.4rem; align-items:stretch;">
     <div class="photo-frame" style="aspect-ratio:auto;">
-      <img src="https://assets.science.nasa.gov/content/dam/science/esd/eo/images/imagerecords/42000/42149/ISS022-E-012224.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg" alt="Piletas de evaporación de litio en un salar altoandino, fotografiadas desde la Estación Espacial Internacional">
-      <div class="photo-cred">Piletas de evaporación en un salar altoandino — NASA (fotografía astronauta, EEI)</div>
+      <img src="https://storage.epbr.com.br/2024/04/Projeto-Fenix-da-Arcadium-Lithium-no-Salar-del-Hombre-Muerto-provincia-argentina-de-Catamarca-um-dos-poucos-que-produzem-e-exportam-litio-Foto-Airbus-via-Google-Earth-1-1536x1024.jpg" alt="Vista aérea del Proyecto Fénix en el Salar del Hombre Muerto">
+      <div class="photo-cred">Proyecto Fénix, Salar del Hombre Muerto — imagen aérea (Airbus / Google Earth)</div>
     </div>
     <div class="timeline">
       <div class="t-item">
@@ -709,18 +700,23 @@ p{ line-height:1.42; color:var(--ink-soft); }
 <section class="slide" data-presenters="Grupo">
   <span class="badge">REGISTRO AUDIOVISUAL</span>
   <h2 class="slide-title small" style="margin-top:1rem;">UNA VOZ DESDE<br>EL TERRITORIO.</h2>
+  <div class="clip-switch">
+    <button class="clip-btn active" data-start="587" data-end="611">Fragmento 1 · 09:47–10:11</button>
+    <button class="clip-btn" data-start="720" data-end="786">Fragmento 2 · 12:00–13:06</button>
+  </div>
   <div class="video-stage">
     <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/vYLcB3Muux4?rel=0&modestbranding=1" title="¿Cómo afecta la extracción de litio a las comunidades indígenas altoandinas?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe id="interviewFrame" src="https://www.youtube.com/embed/Bj_lp4oR4Yg?start=587&end=611&rel=0&modestbranding=1" title="Fragmentos seleccionados de entrevista sobre extracción de litio en Catamarca" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
     <div class="video-info">
-      <div><b>¿Cómo afecta la extracción de litio a las comunidades indígenas altoandinas?</b><br><span>Barricada TV · Catamarca · 2022</span></div>
+      <div><b>Fragmentos seleccionados del reportaje</b><br><span>Video aportado para la presentación · Catamarca</span></div>
       <div class="video-question">MIENTRAS LO VEMOS →<br><strong>¿Qué relación aparece entre litio, agua y territorio?</strong></div>
     </div>
+    <div class="clip-meta" id="clipMeta">Fragmento visual: 09:47–10:11 · 24 segundos</div>
   </div>
   <div class="notes">
     <div class="notes-block" data-speaker="Grupo">
-      <p>Acá incorporamos el componente audiovisual pedido por la consigna. Es un informe con testimonios realizado en Catamarca sobre la extracción de litio y sus efectos en comunidades altoandinas. Lo importante es no presentar las opiniones del video como si fueran datos científicos: después de verlo, las relacionamos con los conceptos que explicamos antes, especialmente agua, territorio, actores e impacto ambiental.</p>
+      <p>Acá incorporamos el componente audiovisual. Vamos a mostrar dos fragmentos breves del mismo video para no cortar el ritmo de la exposición. Primero, entre 09:47 y 10:11, aparecen imágenes y comentarios vinculados con el Río Trapiche y la intervención del territorio. Después, entre 12:00 y 13:06, escuchamos a Elizabeth del Valle Mamaní, integrante de la comunidad Atacameña, hablar sobre lo que significa la extracción de litio para su territorio. Los testimonios expresan una perspectiva situada y no deben presentarse como si fueran datos científicos por sí mismos. Los usamos para conectar la experiencia territorial con los datos y conceptos ambientales que explicamos en el resto del trabajo.</p>
     </div>
   </div>
 </section>
@@ -770,7 +766,7 @@ p{ line-height:1.42; color:var(--ink-soft); }
     </div>
     <div>
       <div class="source-cat">Imágenes</div>
-      <div class="source-item">NASA Earth Observatory — imágenes satelitales del Salar del Hombre Muerto</div>
+      <div class="source-item">NASA Earth Observatory / EO-1 — imágenes satelitales del Salar del Hombre Muerto</div>
       <div class="source-item">Barricada TV — entrevista/informe audiovisual sobre litio y comunidades en Catamarca (2022)</div>
     </div>
   </div>
@@ -884,6 +880,23 @@ p{ line-height:1.42; color:var(--ink-soft); }
   progressFill.style.width = (1/total*100) + '%';
   counter.textContent = '1 / ' + total;
   renderNotes(0);
+})();
+</script>
+
+<script>
+(function(){
+  const frame=document.getElementById('interviewFrame');
+  const meta=document.getElementById('clipMeta');
+  if(!frame) return;
+  document.querySelectorAll('.clip-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.clip-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const start=btn.dataset.start, end=btn.dataset.end;
+      frame.src=`https://www.youtube.com/embed/Bj_lp4oR4Yg?start=${start}&end=${end}&rel=0&modestbranding=1`;
+      meta.textContent = start==='587' ? 'Fragmento visual: 09:47–10:11 · 24 segundos' : 'Testimonio: 12:00–13:06 · 1 minuto 6 segundos';
+    });
+  });
 })();
 </script>
 
