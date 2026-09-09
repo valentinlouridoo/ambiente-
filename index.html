@@ -151,8 +151,8 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
 .locator svg{ width:100%; height:auto; max-height:20rem; }
 .visual-card{position:relative; border-radius:22px; overflow:hidden; background:#e9eee9; box-shadow:var(--shadow); min-height:20rem; border:1px solid rgba(42,33,24,.10);}
 .visual-card img{width:100%;height:100%;min-height:20rem;object-fit:cover;display:block;}
-.map-visual{min-height:0 !important; height:29rem; display:flex; align-items:center; justify-content:center; background:#fff;}
-.map-visual img{min-height:0 !important; height:100%; width:100%; object-fit:contain; padding:.6rem; background:#fff;}
+.map-visual{min-height:0 !important; height:29rem; display:flex; align-items:center; justify-content:center; background:#fff; padding:1rem;}
+.map-visual img{min-height:0 !important; max-height:100%; max-width:100%; width:auto; height:auto; object-fit:contain; display:block; background:#fff;}
 .visual-overlay{position:absolute;inset:auto 0 0 0;padding:3rem 1.1rem .9rem;background:linear-gradient(transparent,rgba(18,31,32,.82));color:#fff;}
 .visual-overlay b{font-size:1.02rem;}.visual-overlay span{display:block;font-size:.72rem;opacity:.86;margin-top:.2rem;}
 .map-caption{font-size:.72rem;color:var(--ink-soft);margin:.4rem 0 0;text-align:center;opacity:.8;}
@@ -360,6 +360,35 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
   .final-questions span{font-size:1.08rem;}
 }
 
+/* FINAL PROJECTOR READABILITY + MAP FIX */
+@media (min-width:821px){
+  .slide-title{font-size:4.7rem;}
+  .slide-title.small{font-size:3.5rem; line-height:1.02;}
+  p{font-size:1.34rem !important; line-height:1.5;}
+  .section-label{font-size:1.02rem; letter-spacing:.1em; padding:.24rem 0 .24rem .8rem;}
+  .datachip .label{font-size:1.18rem !important; line-height:1.35;}
+  .datachip .num{font-size:2.3rem;}
+  .p-label{font-size:1.25rem;}
+  .p-desc{font-size:1.16rem;}
+  .actor-card h4{font-size:1.38rem;}
+  .actor-card p{font-size:1.15rem; line-height:1.48;}
+  .t-year{font-size:1.95rem;}
+  .t-text{font-size:1.27rem; line-height:1.48;}
+  .bal-item{font-size:1.22rem; line-height:1.42;}
+  .balance-col h3{font-size:1.42rem;}
+  .chain-node{font-size:1.38rem;}
+  .final-questions span{font-size:1.12rem;}
+  .source-item{font-size:1.08rem;}
+  .horizon-wrap > div:last-child{font-size:1.05rem !important;}
+  .horizon-wrap > div:last-child > div{font-size:1.05rem !important;}
+  .map-caption{font-size:.9rem;}
+  .map-visual{height:30rem; padding:1.1rem;}
+}
+@media (max-width:820px){
+  .map-visual{height:27rem; padding:.6rem;}
+  .map-visual img{max-width:100%; max-height:100%; width:auto; height:auto;}
+}
+
 </style>
 </head>
 <body>
@@ -423,9 +452,8 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
       </div>
     </div>
     <div>
-      <div class="visual-card" style="min-height:22rem;">
+      <div class="visual-card map-visual" aria-label="Mapa completo del Triángulo del Litio">
         <img src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/4YWEBR23MFBXRAGVEHHGCEIEUI.jpg" alt="Mapa del Triángulo del Litio en Sudamérica">
-        <div class="visual-overlay"><b>Triángulo del Litio</b><span>Bolivia · Chile · Argentina</span></div>
       </div>
       <p class="map-caption">Mapa regional utilizado como referencia geográfica. Fuente visual: Infobae / Yale University.</p>
     </div>
