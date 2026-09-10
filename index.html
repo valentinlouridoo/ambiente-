@@ -890,7 +890,6 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
 </div><!-- /deck -->
 </div><!-- /deck-wrap -->
 
-
 <div class="controls">
   <button class="ctrl-btn" id="prevBtn" title="Anterior (←)">‹</button>
   <span class="ctrl-count" id="slideCounter">1 / 18</span>
@@ -919,15 +918,6 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
   document.addEventListener('touchstart', revealControls, {passive:true});
   controls.addEventListener('mouseenter', ()=>{ clearTimeout(controlsTimer); controls.classList.add('visible'); });
   controls.addEventListener('mouseleave', revealControls);
-    }
-    let html = '';
-    blocks.forEach(b=>{
-      const sp = b.getAttribute('data-speaker') || 'Grupo';
-      const cls = speakerClass[sp] || 'ns-laza';
-      html += '<div class="notes-block"><span class="notes-speaker ' + cls + '">' + sp.toUpperCase() + '</span><p>' + b.querySelector('p').innerHTML + '</p></div>';
-    });
-    notesContent.innerHTML = html;
-  }
 
   function goTo(i){
     if(i < 0 || i >= total || i === current) { if(i>=0 && i<total){} else return; }
@@ -939,7 +929,6 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
     slides[current].classList.add('active');
     progressFill.style.width = ((current+1)/total*100) + '%';
     counter.textContent = (current+1) + ' / ' + total;
-    renderNotes(current);
   }
 
   document.getElementById('nextBtn').addEventListener('click', ()=>goTo(current+1));
@@ -954,16 +943,13 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
     }
   }
 
-  notesToggle.addEventListener('click', ()=>{
-    notesPanel.classList.toggle('open');
-  });
+
 
   window.addEventListener('keydown', (e)=>{
     if(e.key === 'ArrowRight' || e.key === ' '){ e.preventDefault(); goTo(current+1); }
     else if(e.key === 'ArrowLeft'){ e.preventDefault(); goTo(current-1); }
     else if(e.key.toLowerCase() === 'f'){ toggleFullscreen(); }
-    else if(e.key === 'Escape'){ if(document.fullscreenElement) document.exitFullscreen(); notesPanel.classList.remove('open'); }
-    else if(e.key.toLowerCase() === 'n'){ notesPanel.classList.toggle('open'); }
+    else if(e.key === 'Escape'){ if(document.fullscreenElement) document.exitFullscreen(); }
   });
 
   // swipe support (touch projectors / tablets)
@@ -980,7 +966,6 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
   // init
   progressFill.style.width = (1/total*100) + '%';
   counter.textContent = '1 / ' + total;
-  renderNotes(0);
 })();
 </script>
 
