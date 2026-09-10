@@ -402,6 +402,33 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
   .map-visual img{max-width:100%; max-height:100%; width:auto; height:auto;}
 }
 
+
+/* REFINAMIENTO DE LEGIBILIDAD — proceso + agua */
+@media (min-width:821px){
+  .process-slide{padding:3.5% 5.8% 3.8%;}
+  .process-slide .slide-title.small{font-size:3.0rem !important; line-height:1.02; margin-top:.15rem !important;}
+  .process-slide .two-col{grid-template-columns:.72fr 1.28fr !important; gap:2rem !important; margin-top:.55rem !important; align-items:start !important;}
+  .process-slide .process{padding-top:.15rem;}
+  .process-slide .p-step{min-height:2.45rem;}
+  .process-slide .p-dot{width:1.85rem;height:1.85rem;font-size:.82rem; flex:0 0 auto;}
+  .process-slide .p-label{font-size:1.12rem !important; line-height:1.08;}
+  .process-slide .p-desc{font-size:.98rem !important; line-height:1.12;}
+  .process-slide .p-arrow{font-size:.8rem; margin:-.02rem 0;}
+  .process-slide .visual-card{min-height:11.2rem !important; margin-bottom:.55rem !important;}
+  .process-slide .visual-card img{min-height:11.2rem;}
+  .process-slide p{font-size:1.08rem !important; line-height:1.3; margin:.38rem 0;}
+
+  /* Slide de agua: prioriza lectura completa, sin recortes */
+  .water-slide{padding:3.8% 5.8% 4%;}
+  .water-slide .slide-title.small{font-size:3.05rem !important; line-height:1.03; margin-top:.2rem !important;}
+  .water-slide .two-col{grid-template-columns:1.16fr .84fr !important; gap:2.2rem !important; margin-top:.7rem !important; align-items:start !important;}
+  .water-slide .two-col > div:first-child p{font-size:1.12rem !important; line-height:1.4; margin:.35rem 0 .8rem;}
+  .water-slide .two-col > div:last-child{gap:.65rem !important; padding-top:.25rem;}
+  .water-slide .datachip{padding:.85rem 1rem;}
+  .water-slide .datachip .num{font-size:2rem;}
+  .water-slide .datachip .label{font-size:1rem !important; line-height:1.28;}
+}
+
 </style>
 </head>
 <body>
@@ -635,7 +662,7 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
 </section>
 
 <!-- 10 — EL AGUA ES EL PUNTO CRÍTICO -->
-<section class="slide" data-presenters="Chaves">
+<section class="slide water-slide" data-presenters="Chaves">
   <h2 class="slide-title small" style="margin-top:1rem;">IMPACTO SOBRE EL AGUA<br>Y EL TERRITORIO</h2>
   <div class="two-col" style="margin-top:.8rem;">
     <div>
@@ -851,7 +878,7 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
     </div>
   </div>
   <div class="footer-row">
-    <p class="source-note">Trabajo elaborado para la materia Ambiente, Desarrollo y Sociedad. Cifras actualizadas a 2026 según las fuentes citadas. La resolución judicial del conflicto por el Río Los Patos sigue abierta al momento de esta presentación.</p>
+    <p class="source-note">Trabajo elaborado para la materia Degradación del Suelo. Cifras actualizadas a 2026 según las fuentes citadas. La resolución judicial del conflicto por el Río Los Patos sigue abierta al momento de esta presentación.</p>
   </div>
   <div class="notes">
     <div class="notes-block" data-speaker="Grupo">
