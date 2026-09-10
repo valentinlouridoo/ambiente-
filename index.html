@@ -890,12 +890,6 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
 </div><!-- /deck -->
 </div><!-- /deck-wrap -->
 
-<button class="notes-toggle" id="notesToggle" type="button">📋 Notas del expositor</button>
-
-<div class="notes-panel" id="notesPanel">
-  <h5 id="notesTitle">Notas — Diapositiva 1</h5>
-  <div id="notesContent"></div>
-</div>
 
 <div class="controls">
   <button class="ctrl-btn" id="prevBtn" title="Anterior (←)">‹</button>
@@ -912,10 +906,6 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
 
   const progressFill = document.getElementById('progressFill');
   const counter = document.getElementById('slideCounter');
-  const notesPanel = document.getElementById('notesPanel');
-  const notesContent = document.getElementById('notesContent');
-  const notesTitle = document.getElementById('notesTitle');
-  const notesToggle = document.getElementById('notesToggle');
   const controls = document.querySelector('.controls');
   const speakerClass = {Valen:'ns-valen', Bauti:'ns-bauti', Chaves:'ns-chaves', Laza:'ns-laza', Grupo:'ns-laza'};
 
@@ -929,14 +919,6 @@ p{ line-height:1.5; color:var(--ink-soft); font-size:1.18rem; }
   document.addEventListener('touchstart', revealControls, {passive:true});
   controls.addEventListener('mouseenter', ()=>{ clearTimeout(controlsTimer); controls.classList.add('visible'); });
   controls.addEventListener('mouseleave', revealControls);
-
-  function renderNotes(i){
-    const slide = slides[i];
-    const blocks = slide.querySelectorAll('.notes .notes-block');
-    notesTitle.textContent = 'Notas — Diapositiva ' + (i+1) + ' de ' + total;
-    if(!blocks.length){
-      notesContent.innerHTML = '<p style="opacity:.6;">Sin notas para esta diapositiva.</p>';
-      return;
     }
     let html = '';
     blocks.forEach(b=>{
